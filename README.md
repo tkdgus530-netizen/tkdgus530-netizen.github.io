@@ -86,3 +86,12 @@ python3 -m http.server 8000
 저장소 **Settings → Pages → Build and deployment**
 - Source: **Deploy from a branch**
 - Branch: **main** / **(root)** → Save
+
+## 아티팩트(편집 화면)에서 반영하기
+
+claude.ai 아티팩트에서 글·후기·일정·사진을 고치고 저장한 뒤, 아티팩트의 **🌐 공개 사이트에 반영** 버튼을 누르면
+claude.ai의 '사회자 사이트 반영' 작업이 실행되어 이 저장소에 자동으로 커밋·푸시합니다. 보통 몇 분 뒤 사이트에 보입니다.
+
+- 이 작업은 `tools/sync_from_artifact.py`로 `data/site.json`, `images/`, `index.html` 맨 위 미리보기 정보만 바꿉니다.
+- 버튼은 **작업이 등록된 claude.ai 계정**에서만 동작합니다. 다른 계정에서는 아티팩트의 '공개 사이트 파일' 내려받기를 쓰세요.
+- 저장소에서 `data/site.json`을 직접 고쳐도 되지만, 그 뒤 아티팩트에서 반영하면 아티팩트 내용으로 덮어씁니다. 한쪽에서만 고치는 것을 권합니다.
