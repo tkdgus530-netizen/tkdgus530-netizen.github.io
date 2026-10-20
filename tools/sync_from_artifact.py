@@ -71,6 +71,8 @@ def map_images(st, blob_dir, repo):
     st['hero']['photo'] = fix(st['hero'].get('photo', ''), 'profile')
     for it in st['reviews']['items']:
         it['image'] = fix(it.get('image', ''))
+        if 'images' in it:
+            it['images'] = [x for x in (fix(v) for v in it['images']) if x]
     for it in st['album']['items']:
         it['src'] = fix(it.get('src', ''))
     st['album']['items'] = [x for x in st['album']['items'] if x['src']]

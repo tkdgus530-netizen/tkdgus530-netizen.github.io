@@ -43,6 +43,8 @@ GitHub 웹에서 `data/site.json` → 연필 아이콘 → 고친 뒤 **Commit c
 ```
 
 `image`에 캡처 이미지 경로(예: `"images/review-01.jpg"`)를 넣으면 후기 위에 이미지가 붙습니다.
+여러 장이면 `"images": ["images/review-01.jpg", "images/review-02.jpg"]`처럼 목록으로 넣으면 2열로 보입니다(이때 `image`는 `""`로 두세요).
+아티팩트는 후기당 1장만 다루므로, 여러 장은 아티팩트에서 반영하면 빠집니다.
 
 ### 예식 일정 하나
 

@@ -116,6 +116,8 @@ button { font: inherit; color: inherit; }
 .review-meta { color: var(--muted); }
 .review-shot { width: 100%; padding: 0; border: 0; background: var(--mist); border-radius: 12px; overflow: hidden; cursor: zoom-in; }
 .review-shot img { width: 100%; max-height: 360px; object-fit: cover; object-position: top; }
+.review-shots.multi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.review-shots.multi .review-shot img { height: 200px; max-height: none; }
 
 /* 일정 캘린더 */
 .about { background: var(--mist); }

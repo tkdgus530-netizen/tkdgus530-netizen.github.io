@@ -32,7 +32,9 @@
   var firstRender = true;
 
   // ===== 후기 =====
-  function visibleReviews() { return state.reviews.items.filter(function (it) { return it.text || it.image; }); }
+  // 후기 이미지: 여러 장은 images, 예전 형식은 image 한 장
+  function reviewImages(it) { return (it.image ? [it.image] : []).concat(Array.isArray(it.images) ? it.images : []).filter(Boolean); }
+  function visibleReviews() { return state.reviews.items.filter(function (it) { return it.text || reviewImages(it).length; }); }
   function dateStr(it) { return it.year ? it.year + '년' + (it.month ? ' ' + it.month + '월' : '') : ''; }
   function reviewWho(it) {
     var parts = [];
@@ -155,7 +157,12 @@
       h += '<section class="section reviews" id="reviews"><div class="wrap"><span class="eyebrow">REVIEWS</span>' + tag('h2', 'section-title', r.heading) + tag('p', 'section-lead', r.lead) +
         '<div class="review-grid">' + reviews.map(function (it) {
           return '<article class="review">' +
-            (it.image ? '<button type="button" class="review-shot" data-zoom="' + esc(it.image) + '" data-cap="' + esc(it.author) + '"><img src="' + esc(safeUrl(it.image, '')) + '" alt="' + esc((it.author || '고객') + ' 후기 이미지') + '" loading="lazy"></button>' : '') +
+            (function (imgs) {
+              if (!imgs.length) return '';
+              return '<div class="review-shots' + (imgs.length > 1 ? ' multi' : '') + '">' + imgs.map(function (src, i) {
+                return '<button type="button" class="review-shot" data-zoom="' + esc(src) + '" data-cap="' + esc(it.author) + '"><img src="' + esc(safeUrl(src, '')) + '" alt="' + esc((it.author || '고객') + ' 후기 이미지' + (imgs.length > 1 ? ' ' + (i + 1) : '')) + '" loading="lazy"></button>';
+              }).join('') + '</div>';
+            })(reviewImages(it)) +
             tag('p', 'review-text', it.text) + reviewWho(it) + '</article>';
         }).join('') + '</div></div></section>';
     }
