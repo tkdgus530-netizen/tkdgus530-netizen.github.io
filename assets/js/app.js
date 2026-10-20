@@ -148,7 +148,7 @@
     // 첫 화면
     h += '<section class="hero">' + (firstRender ? '<div class="confetti" aria-hidden="true"></div>' : '') +
       '<div class="wrap hero-grid"><div class="hero-text">' + tag('h1', 'hero-title', state.hero.title) + tag('p', 'hero-lead', state.hero.lead) +
-      '<div class="actions"><a class="btn btn-kakao" href="' + kakao + '" target="_blank" rel="noopener">카카오톡으로 문의하기</a><a class="btn btn-mail" href="' + mail + '">메일로 문의하기</a></div></div>' +
+      '<div class="actions"><a class="btn btn-kakao" href="' + kakao + '" target="_blank" rel="noopener">카카오톡 문의</a><a class="btn btn-mail" href="' + mail + '">메일 문의</a></div></div>' +
       '<div class="hero-photo">' + (state.hero.photo ? '<img src="' + esc(safeUrl(state.hero.photo, '')) + '" alt="' + esc(state.brand) + '" width="294" height="353">' : '<div class="photo-empty"></div>') + '</div></div></section>';
 
     // 1. 후기 (후기가 있을 때만)
@@ -200,7 +200,7 @@
 
     // 6. 문의 (CTA)
     h += '<section class="contact" id="contact"><div class="wrap">' + tag('h2', 'contact-title', state.cta.title) + tag('p', 'contact-lead', state.cta.lead) +
-      '<div class="actions"><a class="btn btn-kakao" href="' + kakao + '" target="_blank" rel="noopener">카카오톡으로 문의하기</a><a class="btn btn-mail" href="' + mail + '">메일로 문의하기</a></div>' +
+      '<div class="actions"><a class="btn btn-kakao" href="' + kakao + '" target="_blank" rel="noopener">카카오톡 문의</a><a class="btn btn-mail" href="' + mail + '">메일 문의</a></div>' +
       '<p class="contact-email"><span>' + esc(state.contact.email) + '</span><button type="button" class="copy-btn" data-act="copy">메일 주소 복사</button><span class="copy-status" role="status" aria-live="polite"></span></p></div></section>';
 
     h += '</main><footer class="footer">' + tag('p', '', state.footer) + '</footer>';
